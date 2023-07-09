@@ -1,0 +1,23 @@
+<div class="header-container">
+  <a class="logo" style="margin-left: 25px;" href="voting-home">Home</a>
+  <a class="logout" style="margin-left: 900px;" href="login">Logout : {{userId}}</a>
+</div>
+<h1>Voting Results</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Total Votes</th>
+      <th>Yes %</th>
+      <th>No %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of votesPerQuestion">
+      <td>{{ row.question }}</td>
+      <td>{{ row.totalVotes }}</td>
+      <td>{{ row.percY }}%</td>
+      <td>{{ row.percN }}%</td>
+    </tr>
+  </tbody>
+</table>

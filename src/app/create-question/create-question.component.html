@@ -1,0 +1,33 @@
+<div class="header-container">
+  <a class="logo" style="margin-left: 25px;" href="voting-home">Home</a>
+  <a class="logout" style="margin-left: 900px;" href="login">Logout : {{createQuestionObj.userId}}</a>
+</div>
+
+<div class="background">
+  <div class="shape"></div>
+  <div class="shape"></div>
+</div>
+<form #userForm="ngForm">
+  <h1>Create a new Question</h1>
+  <h2>Here you can create a new question..</h2>
+
+  <label>Please post your question here:</label><br>
+  <textarea class="form-control" rows="2" cols="100" name="name" [(ngModel)]="createQuestionObj.question"
+    #name="ngModel" required minlength="5" maxlength="200" placeholder="Your question.." id="question"></textarea>
+  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+
+    <div *ngIf="name.errors?.['required']">
+      Question is required.
+    </div>
+    <div *ngIf="name.errors?.['pattern']">
+      Please enter only alpha-numeric characters.
+    </div>
+    <div *ngIf="name.errors?.['minlength']">
+      Question length cannot be less than 5.
+    </div>
+
+  </div><br>
+
+  <button style="color: rgb(39, 40, 36)" [disabled]="userForm.invalid" (click)="onSubmit()">Submit</button><br>
+  <label>{{this.createQuestionStatus}}</label>
+</form>
